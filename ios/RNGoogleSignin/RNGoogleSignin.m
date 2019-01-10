@@ -70,7 +70,7 @@ RCT_EXPORT_METHOD(configure:(NSDictionary *)options
   [GIDSignIn sharedInstance].scopes = options[@"scopes"];
   [GIDSignIn sharedInstance].shouldFetchBasicProfile = YES; // email, profile
   [GIDSignIn sharedInstance].loginHint = options[@"loginHint"];
-    
+
   if (options[@"iosClientId"]) {
     [GIDSignIn sharedInstance].clientID = options[@"iosClientId"];
   } else {
@@ -168,7 +168,7 @@ RCT_REMAP_METHOD(isSignedIn,
                            @"idToken": user.authentication.idToken,
                            @"serverAuthCode": user.serverAuthCode ? user.serverAuthCode : [NSNull null],
                            @"accessToken": user.authentication.accessToken,
-                           @"scopes": user.grantedScopes,
+                           @"scopes": user.accessibleScopes,
                            @"accessTokenExpirationDate": [NSNumber numberWithDouble:user.authentication.accessTokenExpirationDate.timeIntervalSinceNow] // Deprecated as of 2018-08-06
                            };
 
